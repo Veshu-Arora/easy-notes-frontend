@@ -1,0 +1,54 @@
+.header-container{
+	display: flex;
+	height: 17vh;
+	background-color: white;
+	padding: 0px 0px 10px 0px;
+	/* background-color: red; */
+	border-top: 10px solid black;
+	border-left: 7px solid black;
+	border-right: 10px solid black;
+
+}
+
+
+.header-container .easy-notes-logo-card-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25vw;
+	background-color: #f1f1f1;
+	margin-right: 10px;
+}
+
+
+.header-container .user-info-container{
+	/* display: flex;
+	justify-content: flex-end !important; */
+	width: 75vw;
+	background-color: red;
+	/* padding: 10px 10px; */
+}
+
+.header-container .user-info-container .user-name{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	background-color: white;
+	border: 3px solid black;
+	/* min-width: auto; */
+	width: 170px;
+	height: 30px;
+	padding: 0 5px 0 5px;
+	/* margin-top: 10px; */
+	margin-right: 10px;
+}
+
+/* .header-container .user-info-container .user-info{
+	background-color: white;
+	font-size: 25px;
+	
+} */
+
+

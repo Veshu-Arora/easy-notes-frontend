@@ -1,0 +1,40 @@
+.header-container{
+	display: flex;
+	height: 17vh;
+	background-color: white;
+	padding: 0px 0px 10px 0px;
+	/* background-color: red; */
+	border-top: 10px solid black;
+	border-left: 7px solid black;
+	border-right: 10px solid black;
+
+}
+
+.header-container .user-info-container{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	width: 75vw;
+	background-color: #f1f1f1;
+}
+
+
+.login-container{
+	width: 25vw;
+	background-color: #f1f1f1;
+	margin-right: 10px;
+}
+
+.login-container .user-image-container{
+	margin-left: 10px;
+	margin-top: 10px;
+	height: 40px;
+	width: 40px;
+}
+
+.login-container .user-image-container .user-image{
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}

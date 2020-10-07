@@ -1,0 +1,64 @@
+.body-container .main-body .group-description-button-container{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	height: 100%;
+
+}
+
+.body-container .main-body .group-description-button-container .groups-description-button-card{
+	width: 98%;
+	background-color: white;
+	height: 96%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+	text-align: left;
+	border: 10px solid white;
+	overflow-y: hidden;
+	border: 10px solid white;
+	overflow-y: scroll;
+	
+}
+
+
+.group-description-button-container .groups-description-button-card .groups-description-button{
+	display: flex;
+	font-size:22px;
+	/* font-style: italic; */
+	margin-bottom: 15px;
+	margin-top: 15px;
+	margin-left: 10px;
+	background-color: #f1f1f1;
+}
+
+.group-description-button-container .groups-description-button-card .groups-description-button .groups-card{
+	padding-left: 10px;
+	background-color: #f1f1f1;
+	width: 230px;
+	align-items: left !important;
+}
+
+.group-description-button-container .groups-description-button-card .groups-description-button .description-card{
+	display: flex;
+	flex: 1;
+	padding-left: 30px;
+	background-color: #f8f8f8;
+}
+
+.group-description-button-container .groups-description-button-card .groups-description-button .button-card{
+	display: flex;
+	margin-right: 15px;	
+}
+
+.group-description-button-container .groups-description-button-card .groups-description-button .button-card button{
+	padding: 5px 5px 5px 5px;
+	margin-right: 15px;	
+}
+
+/* #verticle-line {
+	width: 4px;
+	height: 25px;
+	background: black;
+}   */

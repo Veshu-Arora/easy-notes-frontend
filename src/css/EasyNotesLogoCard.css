@@ -1,0 +1,21 @@
+.header-container .easy-notes-logo-card-container .easy-notes-logo-card{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	width: 93%;
+	background-color: white;
+	height: 80%;
+	transition: 0.3s;
+  	text-align: center;
+}
+
+/* .header-container .easy-notes-logo-card-container .easy-notes-logo-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+} */
+  
+.header-container .easy-notes-logo-card-container .easy-notes-logo-card .text-or-logo{
+    font-size: 33px;
+	font-style: italic;
+	font-weight: 500;
+}

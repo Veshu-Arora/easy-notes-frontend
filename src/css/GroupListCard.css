@@ -1,0 +1,19 @@
+.body-container .side-space .group-list-card{
+	width:93%;
+	background-color: white;
+	height: 96%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+	text-align: left;
+	border: 10px solid white;
+	overflow-y: hidden
+}
+
+
+.side-space .group-list-card .text-or-logo{
+    font-size:23px;
+	font-style: italic;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	margin-left: 10px;
+}

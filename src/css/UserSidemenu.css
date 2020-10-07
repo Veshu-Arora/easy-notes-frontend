@@ -1,0 +1,49 @@
+.body-container .side-space .question-and-user-sidemenu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.body-container .side-space .side-menu-question{
+	width: 80%;
+	background-color: white;
+	height: 12%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+    text-align: left;
+    padding: 5px;
+      
+}
+
+  
+.side-space .side-menu-question .text-or-logo{
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.body-container .side-space .user-sidemenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+	width: 80%;
+	background-color: white;
+	height: 70%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+    text-align: left;
+    padding: 5px 5px 5px 5px;
+}
+
+/* .body-container .side-space .user-sidemenu:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+} */
+  
+.side-space .user-sidemenu .text-or-logo{
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+}

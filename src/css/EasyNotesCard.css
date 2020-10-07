@@ -1,0 +1,26 @@
+.body-container .side-space .easy-notes-card{
+	width: 80%;
+	background-color: white;
+	height: 80%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
+	text-align: center;
+	border: 10px solid white;
+	overflow-y: hidden;
+}
+
+.body-container .side-space .easy-notes-card .description-text{
+	color: silver;
+	font-size: 30px;
+	text-align: left;
+	margin-top: 5px;
+}
+
+.body-container .side-space .easy-notes-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+  
+.side-space .easy-notes-card .text-or-logo{
+    font-size: 56px;
+    font-style: italic;
+}
