@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../css/EasyNotesLogoCard.css'
+import '../css/EasyNotesLogoCard.css';
 
 
 class EasyNotesLogoCard extends Component{

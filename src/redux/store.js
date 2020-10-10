@@ -11,6 +11,8 @@ import sessionReducer from './reducers/sessionReducer';
 import groupIdReducer from './reducers/groupIdReducer';
 import groupInfoReducer from './reducers/groupInfoReducer';
 import groupTodosReducer from './reducers/groupTodosReducer';
+import updateGroupTodoIdReducer from './reducers/updateGroupTodoIdReducer';
+import groupSessionReducer from '../redux/reducers/groupSessionReducer';
 
 
 const rootReducer = combineReducers ({
@@ -22,7 +24,9 @@ const rootReducer = combineReducers ({
     sessionReducer : sessionReducer,
     groupIdReducer : groupIdReducer,
     groupInfoReducer : groupInfoReducer,
-    groupTodosReducer : groupTodosReducer
+    groupTodosReducer : groupTodosReducer,
+    updateGroupTodoIdReducer : updateGroupTodoIdReducer,
+    groupSessionReducer : groupSessionReducer
 })
 
 const persistConfig = {
@@ -37,7 +41,9 @@ const persistConfig = {
       "sessionReducer",
       "groupIdReducer",
       "groupInfoReducer",
-      "groupTodosReducer"
+      "groupTodosReducer",
+      "updateGroupTodoIdReducer",
+      "groupSessionReducer"
     ]
   }
 

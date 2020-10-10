@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import GroupSidemenu from './GroupSidemenu';
 import AllGroupTasks from './AllGroupTasks';
 import CreateNewGroupTask from './CreateNewGroupTask';
-import UpdateTasks from './UpdateTasks';
-import UpdateTask from './UpdateTask';
-import DeleteTasks from './DeleteTasks';
+import UpdateGroupTasks from './UpdateGroupTasks';
+import UpdateGroupTask from './UpdateGroupTask';
+import DeleteGroupTasks from './DeleteGroupTasks';
 import '../css/UserDashboardBody.css';
 import { connect } from 'react-redux';
 
@@ -35,15 +35,15 @@ class GroupDashboardBody extends Component{
 
 
                     {/* 3. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Update Tasks" */}
-                    {/* {this.props.active_tab.data === 3?<UpdateTasks />:null} */}
+                    {this.props.active_tab.data === 3?<UpdateGroupTasks />:null}
 
 
                     {/* 4. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Delete Tasks" */}
-                    {/* {this.props.active_tab.data === 4?<DeleteTasks />:null} */}
+                    {this.props.active_tab.data === 4?<DeleteGroupTasks />:null}
 
 
-                    {/* 5. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Delete Tasks" */}
-                    {/* {this.props.active_tab.data === 5?<UpdateTask />:null} */}
+                    {/* 5. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Update Button" */}
+                    {this.props.active_tab.data === 5?<UpdateGroupTask />:null}
 
                 </div>
 	        </div>

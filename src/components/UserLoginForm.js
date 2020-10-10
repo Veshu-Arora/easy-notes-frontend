@@ -34,7 +34,7 @@ class UserLoginForm extends Component{
               }).then((res)=>{
                 this.props.sendSessionData(true);
                 this.props.sendUserInfo(res.data);
-                this.props.history.push('/home');
+                this.props.history.push('/userdashboard');
               }).catch((err)=>{
                   console.log("User Login Error : " + err);
               }); 

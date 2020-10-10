@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import USER_IMAGE from '../assets/images/user.svg';
-import EasyNotesLogoCard from './EasyNotesLogoCard';
-import '../css/Header.css'
+import '../css/Header.css';
 
 class Header extends Component {
   constructor(){

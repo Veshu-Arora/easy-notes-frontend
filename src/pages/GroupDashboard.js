@@ -12,19 +12,10 @@ class GroupDashboard extends Component {
   render(){
 
     // true ! = false
-   if(!this.props.getSessionData.active){
+   if(!this.props.getGroupSessionData.active){
       
-      // return <Redirect to="/"/>;
+      return <Redirect to="/"/>;
 
-      return(
-
-      <div className="app-container">
-
-        <GroupDashboardHeader/>
-
-		    <GroupDashboardBody/> 
-
-	    </div>)
    }
 
     return (
@@ -44,7 +35,7 @@ class GroupDashboard extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    getSessionData : state.sessionReducer  // Gets the User's Personal Todos which are rendered on the page
+    getGroupSessionData : state.groupSessionReducer
   }
 }
 export default connect(mapStateToProps,null)(GroupDashboard);

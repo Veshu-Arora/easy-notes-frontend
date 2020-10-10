@@ -34,7 +34,7 @@ class UserDashboard extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    getSessionData : state.sessionReducer  // Gets the User's Personal Todos which are rendered on the page
+    getSessionData : state.sessionReducer
   }
 }
 export default connect(mapStateToProps,null)(UserDashboard);

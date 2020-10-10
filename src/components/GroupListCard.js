@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../css/GroupListCard.css'
+import '../css/GroupListCard.css';
 
 
 class GroupListCard extends Component{

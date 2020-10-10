@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import {activeTabAction} from '../redux/actions/activeTabAction';
-import {updateTodoIdAction} from '../redux/actions/updateTodoIdAction';
+import {updateGroupTodoIdAction} from '../redux/actions/updateGroupTodoIdAction';
 
 
-class UpdateTasks extends Component{
+class UpdateGroupTasks extends Component{
 
-    updateThisTodo = (id) =>{
+    updateThisGroupTodo = (id) =>{
         this.props.sendActiveTab(5);
-        this.props.sendTodoId(id);
+        this.props.sendGroupTodoId(id);
     }
 
 
@@ -27,14 +27,14 @@ class UpdateTasks extends Component{
                 </div>
 
                 <div className="update-tasks">
-                        {this.props.personalTodos.data.map((todo) => {
+                        {this.props.getGroupTodos.data.map((todo) => {
                             return(
                                 <div>
                                     <div className = 'todo-date'>{todo.expires_on}</div>
 
                                     <div className = 'todo-text-and-update-button'>
                                         <div className = 'todo-text'>{todo.description}</div>
-                                        <div className = 'update-task-button-container'> <button onClick = {() => this.updateThisTodo(todo.id)} > Update </button> </div>
+                                        <div className = 'update-task-button-container'> <button onClick = {() => this.updateThisGroupTodo(todo.id)} > Update </button> </div>
                                     </div>
                                 </div>    
                             )
@@ -50,7 +50,7 @@ class UpdateTasks extends Component{
 const mapStateToProps = (state) => {
     // console.log("dekh toh dhyan se " + JSON.stringify(state.userReducer));
     return {
-      personalTodos : state.personalTodosReducer
+      getGroupTodos : state.groupTodosReducer  // Gets the group todos which are then rendered on the page
     }
     
 }
@@ -58,8 +58,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return ({
       sendActiveTab: (data) => dispatch(activeTabAction(data)), 
-      sendTodoId: (data) => dispatch(updateTodoIdAction(data))
+      sendGroupTodoId: (data) => dispatch(updateGroupTodoIdAction(data))
     })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateTasks);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateGroupTasks);

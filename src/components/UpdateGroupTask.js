@@ -6,7 +6,7 @@ import axios from 'axios';
 import {activeTabAction} from '../redux/actions/activeTabAction';
 
 
-class UpdateTask extends Component{
+class UpdateGroupTask extends Component{
     constructor(){
         super()
         this.state = {
@@ -14,7 +14,7 @@ class UpdateTask extends Component{
             title:'',
             description:'',
             expires_on:'',
-            created_by:'',
+            belongs_to:'',
             expires_at:''
         }
     }
@@ -22,29 +22,31 @@ class UpdateTask extends Component{
 
     componentDidMount() {
 
-        this.updateThisTask();
-        alert(JSON.stringify(this.updateThisTask()))
+        // alert(JSON.stringify(this.props.getGroupTodos))
 
+        this.updateThisGroupTask();
+
+        // alert(JSON.stringify(this.updateThisGroupTask()))
+        // alert(JSON.stringify(this.props.updateTodoId))
 
         this.setState({
-            // created_by : this.props.userData.data.response_data.email
             todo_id : this.props.updateTodoId.data,
-            created_by : this.updateThisTask()[0].created_by,
-            title : this.updateThisTask()[0].title,
-            description : this.updateThisTask()[0].description,
-            expires_on : this.updateThisTask()[0].expires_on,
-            expires_at : this.updateThisTask()[0].expires_at
+            belongs_to : this.updateThisGroupTask()[0].belongs_to,
+            title : this.updateThisGroupTask()[0].title,
+            description : this.updateThisGroupTask()[0].description,
+            expires_on : this.updateThisGroupTask()[0].expires_on,
+            expires_at : this.updateThisGroupTask()[0].expires_at
         })
 
-
-        // alert(JSON.stringify(this.updateThisTask()[0].created_by))
+        // alert(this.state.belongs_to)
+        // // alert(JSON.stringify(this.updateThisTask()[0].created_by))
 
     }
 
 
 
-    updateThisTask = () => {
-        let taskToUpdate = this.props.personalTodos.data.filter((row) => {
+    updateThisGroupTask = () => {
+        let taskToUpdate = this.props.getGroupTodos.data.filter((row) => {
             if(row.id === this.props.updateTodoId.data){
                 return row;
             }
@@ -61,24 +63,24 @@ class UpdateTask extends Component{
 
     updateTodo = () => {
         
-        if(this.state.title && this.state.description && this.state.expires_on && this.state.created_by && this.state.expires_at&& this.state.todo_id)
+        if(this.state.title && this.state.description && this.state.expires_on && this.state.belongs_to && this.state.expires_at && this.state.todo_id)
         {
          
             axios({
                 method: 'put',
-                url: 'http://127.0.0.1:5000/personaltodos',
+                url: 'http://127.0.0.1:5000/publicgrouptodos',
                 data: {
                   todo_id : this.state.todo_id,
                   title:this.state.title,
                   description:this.state.description,
                   expires_on:this.state.expires_on,
-                  created_by:this.state.created_by,
+                  belongs_to:this.state.belongs_to,
                   expires_at:this.state.expires_at
                 }
               }).then((res)=>{
                 console.log(JSON.stringify(res.data));
               }).catch((err)=>{
-                  console.log(" Update Todo Error : " + err);
+                  console.log("Update Group Todo Error : " + err);
               });   
         }
        
@@ -172,14 +174,13 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const mapStateToProps = (state) => {
-    
+
     return {
-    //   userData : state.userReducer,
-      personalTodos : state.personalTodosReducer,
-      updateTodoId : state.updateTodoIdReducer
+      getGroupTodos : state.groupTodosReducer,
+      updateTodoId : state.updateGroupTodoIdReducer
     }
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateTask);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateGroupTask);
 

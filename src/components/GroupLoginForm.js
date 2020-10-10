@@ -3,7 +3,7 @@ import '../css/UserLoginForm.css';  //  WE WILL USE THE CSS OF THE ISER LOGIN FO
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {groupInfoAction} from '../redux/actions/groupInfoAction';
-// import {sessionAction} from '../redux/actions/sessionAction';
+import {groupSessionAction} from '../redux/actions/groupSessionAction';
 
 
 class GroupLoginForm extends Component{
@@ -43,7 +43,7 @@ class GroupLoginForm extends Component{
                 method: 'get',
                 url: `http://127.0.0.1:5000/publicgrouplogin/${this.state.group_id}/${this.state.group_code}/${this.state.password}`,
               }).then((res)=>{
-                // this.props.sendSessionData(true);
+                this.props.sendGroupSessionData(true);
                 this.props.sendGroupInfo(res.data);
                 alert(JSON.stringify(res))
                 this.props.history.push('/groupdashboard');
@@ -96,7 +96,7 @@ class GroupLoginForm extends Component{
 const mapDispatchToProps = (dispatch) => {
     return ({
         sendGroupInfo: (data) => dispatch(groupInfoAction(data)),  
-    //   sendSessionData: (data) => dispatch(sessionAction(data))   
+        sendGroupSessionData: (data) => dispatch(groupSessionAction(data))   
     })
 }
 

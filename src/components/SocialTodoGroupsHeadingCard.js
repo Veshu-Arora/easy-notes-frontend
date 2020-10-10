@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../css/SocialTodoGroupsHeadingCard.css'
+import '../css/SocialTodoGroupsHeadingCard.css';
 
 
 class SocialTodoGroupsHeadingCard extends Component{

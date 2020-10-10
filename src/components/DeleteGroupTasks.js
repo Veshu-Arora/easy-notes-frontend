@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import '../css/DeleteTasks.css';
+import '../css/DeleteTasks.css';  //  FOR NOW WE WILL USE THE SAME CSS AS OF Delete Tasks
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 
-class DeleteTasks extends Component{
+class DeleteGroupTasks extends Component{
     constructor(){
         super()
         this.state = {
@@ -39,14 +39,14 @@ class DeleteTasks extends Component{
         
         axios({
             method: 'delete',
-            url: 'http://127.0.0.1:5000/personaltodos',
+            url: 'http://127.0.0.1:5000/publicgrouptodos',
             data: {
                 todo_id : id
             }
             }).then((res)=>{
             console.log(JSON.stringify(res.data));
             }).catch((err)=>{
-                console.log(" Delete Todo Error : " + err);
+                console.log(" Delete Group Todo Error : " + err);
         });   
        
     }   
@@ -68,7 +68,7 @@ class DeleteTasks extends Component{
 
                     {this.state.pending?<center><h1>Loading</h1></center>:(<div>
 
-                        {this.props.personalTodos.data.map((todo) => {
+                        {this.props.getGroupTodos.data.map((todo) => {
                             return(
                                 <div>
                                     <div className = 'todo-date'>{todo.expires_on}</div>
@@ -93,11 +93,11 @@ class DeleteTasks extends Component{
 
 
 const mapStateToProps = (state) => {
-
+    // console.log("Delete group Task me reducer se aane wala data". state);
     return {
-      personalTodos : state.personalTodosReducer  // Gets the User's Personal Todos which are then rendered on the page
+      getGroupTodos : state.groupTodosReducer  // Gets the group todos which are then rendered on the page
     }
     
 }
 
-export default connect(mapStateToProps, null)(DeleteTasks);
+export default connect(mapStateToProps, null)(DeleteGroupTasks);
