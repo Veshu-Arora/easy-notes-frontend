@@ -3,6 +3,7 @@ import '../css/DeleteTasks.css';  //  FOR NOW WE WILL USE THE SAME CSS AS OF Del
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {deleteGroupTodoIdAction} from '../redux/actions/deleteGroupTodoIdAction';
 
 class DeleteGroupTasks extends Component{
     constructor(){
@@ -10,6 +11,11 @@ class DeleteGroupTasks extends Component{
         this.state = {
             todo_id:'',
         }
+    }
+
+    deleteThisGroupTodo = (id) =>{
+        this.props.sendDeleteTodoId(id);
+        this.props.toggleConfirmDeleteForm()
     }
 
 
@@ -75,7 +81,7 @@ class DeleteGroupTasks extends Component{
                                     
                                     <div className = 'todo-text-and-delete-button'>
                                         <div className = 'todo-text'>{todo.description}</div>
-                                        <div className = 'delete-task-button-container'> <button onClick = {() => this.deleteTodo(todo.id)} > Delete </button> </div>
+                                        <div className = 'delete-task-button-container'> <button onClick = {() => this.deleteThisGroupTodo(todo.id)} > Delete </button> </div>
                                     </div>
                                 </div>
                             )
@@ -92,6 +98,13 @@ class DeleteGroupTasks extends Component{
 } 
 
 
+const mapDispatchToProps = (dispatch) => {
+    return ({
+      sendDeleteTodoId: (data) => dispatch(deleteGroupTodoIdAction(data))
+    })
+}
+
+
 const mapStateToProps = (state) => {
     // console.log("Delete group Task me reducer se aane wala data". state);
     return {
@@ -100,4 +113,4 @@ const mapStateToProps = (state) => {
     
 }
 
-export default connect(mapStateToProps, null)(DeleteGroupTasks);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteGroupTasks);

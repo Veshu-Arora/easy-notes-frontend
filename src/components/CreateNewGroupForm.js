@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../css/UserSignupForm.css';
+import '../css/UserLoginForm.css';
 import axios from 'axios';
 
 class CreateNewGroupForm extends Component{
@@ -12,6 +12,14 @@ class CreateNewGroupForm extends Component{
             description:'',
         }
     }
+
+    generateCode = () => {
+        const fivedigitsrandom = Math.floor(10000 + Math.random() * 90000);
+        const generated_group_code = fivedigitsrandom.toString()
+        this.setState({
+            group_code : generated_group_code
+        })
+    }
  
 
     handleChange = (event) => {
@@ -21,10 +29,9 @@ class CreateNewGroupForm extends Component{
     };
     
 
-    createNewGroup = () => {
+    createNewGroup = () => {    
         if(this.state.group_name && this.state.group_code && this.state.password && this.state.description)
         {
-         
             axios({
                 method: 'post',
                 url: 'http://127.0.0.1:5000/publicgroups',
@@ -35,9 +42,9 @@ class CreateNewGroupForm extends Component{
                   description:this.state.description,
                 }
               }).then((res)=>{
-                console.log(JSON.stringify(res.data));
+                alert(JSON.stringify(res.data.response_data.message))
               }).catch((err)=>{
-                  console.log("Error : " + err);
+                  alert(" Create New Group Error : " + err);
               });   
         }
        
@@ -60,6 +67,13 @@ class CreateNewGroupForm extends Component{
                     value={this.state.group_name}
                     onChange={(event) => this.handleChange(event)}/>
 
+                    <button 
+                    className="generate-code-button" 
+                    onClick={() => this.generateCode()} >
+                        Generate Code
+                    </button>
+
+
                     <input 
                     type="text" 
                     name="group_code" 
@@ -67,7 +81,8 @@ class CreateNewGroupForm extends Component{
                     placeholder="Group Code" 
                     required="" 
                     value={this.state.group_code}
-                    onChange={(event) => this.handleChange(event)}/>
+                    onChange={(event) => this.handleChange(event)}
+                    readOnly />
 
                     <input 
                     type="password" 

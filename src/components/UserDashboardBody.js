@@ -10,13 +10,6 @@ import { connect } from 'react-redux';
 
 
 class UserDashboardBody extends Component{
-    constructor(props){
-        super()
-        this.state = {
-
-        }
-    }
-
     render(){
         return(
 
@@ -39,7 +32,7 @@ class UserDashboardBody extends Component{
 
 
                     {/* 4. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Delete Tasks" */}
-                    {this.props.active_tab.data === 4?<DeleteTasks />:null}
+                    {this.props.active_tab.data === 4?<DeleteTasks toggleConfirmDeleteForm = {this.props.toggleConfirmDeleteForm} />:null}
 
 
                     {/* 5. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Delete Tasks" */}

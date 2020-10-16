@@ -172,7 +172,6 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const mapStateToProps = (state) => {
-    
     return {
     //   userData : state.userReducer,
       personalTodos : state.personalTodosReducer,

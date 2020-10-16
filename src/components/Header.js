@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import USER_IMAGE from '../assets/images/user.svg';
 import '../css/Header.css';
+import {Link} from 'react-router-dom';
 
 class Header extends Component {
   constructor(){
@@ -23,6 +24,8 @@ class Header extends Component {
         </div>
 
 		    <div className="signup-container">
+
+          <button className="signup-button all-groups-button"><Link to = {"/socialtodogroups"}>ALL GROUPS</Link></button>
 
         {/* {this.state.logged_in === false?<button className="signup-button"  onClick={this.props.toggleSignupForm} >SIGNUP</button>:null} */}
 

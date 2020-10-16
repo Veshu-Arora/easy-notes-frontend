@@ -8,6 +8,9 @@
 }
 
 .body-container .side-space .side-menu-question{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 	width: 80%;
 	background-color: white;
 	height: 12%;

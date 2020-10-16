@@ -43,10 +43,15 @@ class GroupLoginForm extends Component{
                 method: 'get',
                 url: `http://127.0.0.1:5000/publicgrouplogin/${this.state.group_id}/${this.state.group_code}/${this.state.password}`,
               }).then((res)=>{
-                this.props.sendGroupSessionData(true);
-                this.props.sendGroupInfo(res.data);
-                alert(JSON.stringify(res))
-                this.props.history.push('/groupdashboard');
+                // alert(JSON.stringify(res.data.response_data))
+                if(res.data.response_data.status){
+                    this.props.sendGroupSessionData(true);
+                    this.props.sendGroupInfo(res.data);               
+                    this.props.history.push('/groupdashboard');
+                }else{
+                    alert(res.data.response_data.message)
+                }
+                
               }).catch((err)=>{
                   console.log("Group Login Error : " + err);
             })

@@ -39,7 +39,7 @@ class GroupDashboardBody extends Component{
 
 
                     {/* 4. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Delete Tasks" */}
-                    {this.props.active_tab.data === 4?<DeleteGroupTasks />:null}
+                    {this.props.active_tab.data === 4?<DeleteGroupTasks  toggleConfirmDeleteForm = {this.props.toggleConfirmDeleteForm} />:null}
 
 
                     {/* 5. THE BELOW COMPONENTS WILL BE RENDERED ON CLICKING THE "Update Button" */}
