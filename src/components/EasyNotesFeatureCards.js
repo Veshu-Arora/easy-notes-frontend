@@ -48,7 +48,7 @@ class EasyNotesFeatureCards extends Component{
                     <hr/>
 
                     <div className='description-text'>
-                        Access any social group with a valid id and password even without an account
+                        Access your groups with a valid code and password even without an account
                     </div>
                         
                 </div> 

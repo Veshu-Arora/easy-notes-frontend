@@ -31,18 +31,27 @@
 
 .header-container .user-info-container .user-name{
 	display: flex;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	font-size: 25px;
+	justify-content: flex-end;
+	align-items: flex-start;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 20px;
 	background-color: white;
-	border: 3px solid black;
-	/* min-width: auto; */
-	width: 170px;
-	height: 30px;
-	padding: 0 5px 0 5px;
-	/* margin-top: 10px; */
-	margin-right: 10px;
+	width: 97.5%;
+	height: 80%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	
+}
+
+.header-container .user-info-container .user-name div{
+	background-color: purple;
+}
+
+.header-container .user-info-container .user-name button{
+	/* border-radius: 2px; */
+	padding: 2px 2px 2px 2px;
+
 }
 
 /* .header-container .user-info-container .user-info{

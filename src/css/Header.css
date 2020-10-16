@@ -24,6 +24,10 @@
 	background-color: white;
 }
 
+.header-container .signup-container a{
+	color: black !important;
+}
+
 .login-container{
 	width: 25vw;
 	background-color: #f1f1f1;

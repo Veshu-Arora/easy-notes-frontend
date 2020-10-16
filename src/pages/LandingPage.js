@@ -5,6 +5,8 @@ import Body from '../components/Body';
 import UserSignupForm from '../components/UserSignupForm'
 import UserLoginForm from '../components/UserLoginForm';
 import CreateNewGroupForm from '../components/CreateNewGroupForm';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 // import './App.css'
 
 
@@ -39,12 +41,18 @@ toggleCreateNewGroupForm =()=>{
 }
 
 
-
-componentDidMount(){
-  console.log(JSON.stringify(this.props));
-}
-
   render(){
+
+    if(this.props.getGroupSessionData.active){
+      
+      return <Redirect to="/groupdashboard"/>;
+    }
+
+    if(this.props.getSessionData.active){
+      
+      return <Redirect to="/userdashboard"/>;
+    }
+
     return (
 
       <div className="app-container">
@@ -64,4 +72,14 @@ componentDidMount(){
     );
   }
 }
-export default LandingPage;
+
+const mapStateToProps = (state) => {
+  return {
+    getGroupSessionData : state.groupSessionReducer,
+    getSessionData : state.sessionReducer,
+    userData : state.userReducer,
+  }
+}
+export default connect(mapStateToProps,null)(LandingPage);
+
+

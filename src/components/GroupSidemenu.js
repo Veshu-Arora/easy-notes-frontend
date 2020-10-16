@@ -34,7 +34,7 @@ class GroupSidemenu extends Component{
 
                     <span className="text-or-logo" onClick = {() => this.props.sendActiveTab(3)}>  &#9734;  Update Task  </span>
 
-                    <span className="text-or-logo" onClick = {() => this.props.sendActiveTab(4)}>&#9734;  Delete Tasks  </span>
+                    <span className="text-or-logo" onClick = {() => this.props.sendActiveTab(4)}>  &#9734;  Delete Tasks  </span>
 
                     {/* <span className="text-or-logo" onClick = {() => this.props.sendActiveTab(5)}>  &#9734;  Completed Tasks  </span>
 

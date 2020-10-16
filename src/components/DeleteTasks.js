@@ -3,6 +3,8 @@ import '../css/DeleteTasks.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {deleteTodoIdAction} from '../redux/actions/deleteTodoIdAction';
+
 
 class DeleteTasks extends Component{
     constructor(){
@@ -13,43 +15,27 @@ class DeleteTasks extends Component{
     }
 
 
-    // componentDidMount() {
-    //     this.getTodos();
-    // }
+    deleteThisTodo = (id) =>{
+        this.props.sendDeleteTodoId(id);
+        this.props.toggleConfirmDeleteForm()
+    }
 
 
-    // getTodos = () => {
-      
-    //     axios({
-    //         method: 'get',
-    //         url: `http://127.0.0.1:5000/getpersonaltodos/${this.props.userData.data.response_data.email}`,
-    //         }).then((res)=>{
-    //             this.setState({
-    //                 pending:false
-    //             })
-    //         }).catch((err)=>{
-    //             console.log(" Delete Todo Error: " + err);
-    //     });  
-
-    // }
-
-
-
-    deleteTodo = (id) => {
+    // deleteTodo = (id) => {
         
-        axios({
-            method: 'delete',
-            url: 'http://127.0.0.1:5000/personaltodos',
-            data: {
-                todo_id : id
-            }
-            }).then((res)=>{
-            console.log(JSON.stringify(res.data));
-            }).catch((err)=>{
-                console.log(" Delete Todo Error : " + err);
-        });   
+    //     axios({
+    //         method: 'delete',
+    //         url: 'http://127.0.0.1:5000/personaltodos',
+    //         data: {
+    //             todo_id : id
+    //         }
+    //         }).then((res)=>{
+    //         console.log(JSON.stringify(res.data));
+    //         }).catch((err)=>{
+    //             console.log(" Delete Todo Error : " + err);
+    //     });   
        
-    }   
+    // }   
 
 
 
@@ -74,8 +60,10 @@ class DeleteTasks extends Component{
                                     <div className = 'todo-date'>{todo.expires_on}</div>
                                     
                                     <div className = 'todo-text-and-delete-button'>
+
                                         <div className = 'todo-text'>{todo.description}</div>
-                                        <div className = 'delete-task-button-container'> <button onClick = {() => this.deleteTodo(todo.id)} > Delete </button> </div>
+                                        <div className = 'delete-task-button-container'> <button onClick = {() => this.deleteThisTodo(todo.id)} > Delete </button> </div>
+
                                     </div>
                                 </div>
                             )
@@ -92,6 +80,13 @@ class DeleteTasks extends Component{
 } 
 
 
+const mapDispatchToProps = (dispatch) => {
+    return ({
+      sendDeleteTodoId: (data) => dispatch(deleteTodoIdAction(data))
+    })
+}
+
+
 const mapStateToProps = (state) => {
 
     return {
@@ -100,4 +95,4 @@ const mapStateToProps = (state) => {
     
 }
 
-export default connect(mapStateToProps, null)(DeleteTasks);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteTasks);

@@ -17,8 +17,8 @@
 	top: 10%;
 	left:37%;
 	right: 15px;
-	border: 3px solid #f1f1f1;
-	z-index: 2;
+	border: 2px solid black !important;
+	z-index: 1;
 }
 
 /* Add styles to the form container */
@@ -28,32 +28,25 @@
 	background-color: white;
 }
 
-.form-popup .create-new-account{
+.form-popup .question{
 	width: 100%;
 	font-size: 20px;
 	text-align:center;
 	/*background-color: red;*/ 
 }
 
-.form-popup .create-account-button{
-	width: 100%;
-	font-size: 15px;
-	text-align:center;
-	padding: 5px 10px 5px 10px;
-	margin-top: 30px;
-	border: none;
-	outline: none;
-	/*background-color: red;*/ 
+.form-popup .generate-code-button{
+	margin-top: 20px;
+	padding: 2px 2px 2px 2px;
 }
 
-.form-popup .close-signup-button{
-	width: 100%;
-	font-size: 16px;
+.form-popup .delete-button, .form-popup .close-form-button{
+	width: 45%;
+	margin-top: 30px;
+	padding: 4px 8px 4px 8px;
+	font-size: 14px;
 	text-align:center;
-	padding: 5px 10px 5px 10px;
-	/*margin: 0px 0 20px 0;*/
-	margin-top: 25px;
-	border: none;
-	outline: none;
-	/*background-color: red;*/ 
+	margin-left: 10px;
 }
+
+

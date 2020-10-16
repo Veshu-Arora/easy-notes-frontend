@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import '../css/UserLoginForm.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import {userAction} from '../redux/actions/userAction';
 import {sessionAction} from '../redux/actions/sessionAction';
+import '../css/UserLoginForm.css';
 
 
 class UserLoginForm extends Component{
@@ -24,24 +24,24 @@ class UserLoginForm extends Component{
 
    
 
-    login = () => {
-
-        if(this.state.email && this.state.password){
-
-            axios({
-                method: 'get',
-                url: `http://127.0.0.1:5000/login/${this.state.email}/${this.state.password}`,
-              }).then((res)=>{
-                this.props.sendSessionData(true);
+login = () => {
+    if(this.state.email && this.state.password){
+        axios({
+            method: 'get',
+            url: `http://127.0.0.1:5000/login/${this.state.email}/${this.state.password}`,
+            }).then((res)=>{
+            if(res.data.response_data.status){
                 this.props.sendUserInfo(res.data);
-                this.props.history.push('/userdashboard');
-              }).catch((err)=>{
-                  console.log("User Login Error : " + err);
-              }); 
-
-        }
-
+                this.props.sendSessionData(true);
+                this.props.history.push('/userdashboard')
+            }else{
+                alert("account does not exist");
+            }
+            }).catch((err)=>{
+                console.log("User Login Error : " + err);
+            }); 
     }
+}
 
 
     render(){
@@ -73,14 +73,11 @@ class UserLoginForm extends Component{
 
                     <button className="create-account-button" onClick={() => this.login()}>Login</button>
                     <button className="close-signup-button" onClick={this.props.toggleLoginForm}>Close</button>
-                
+
                 </div>
             </div>
         )
-    }
-
-    
-
+    }   
 }
 
 const mapDispatchToProps = (dispatch) => {

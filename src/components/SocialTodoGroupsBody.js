@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import EasyNotesFeatureCards from './EasyNotesFeatureCards';
 import GroupListCard from './GroupListCard';
 import '../css/SocialTodoGroupsBody.css'
 import GroupDescriptionCard from './GroupDescriptionCard';

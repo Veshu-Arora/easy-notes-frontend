@@ -2,18 +2,21 @@ import React, {Component} from 'react';
 import EasyNotesLogoCard from './EasyNotesLogoCard';
 import '../css/UserDashboardHeader.css';
 import { connect } from 'react-redux';
+import {sessionAction} from '../redux/actions/sessionAction';
+import {userAction} from '../redux/actions/userAction';
 
 
 class UserDashboardHeader extends Component {
-  constructor(){
-    super()
-      this.state ={
-        
-      }
+
+  logout = () => {
+    this.props.sendUserInfo({});
+    this.props.sendSessionData(false);
+    localStorage.clear();
   }
 
   render(){
     return (
+      
       <div className="header-container">
 
 		    <div className="easy-notes-logo-card-container">
@@ -24,7 +27,13 @@ class UserDashboardHeader extends Component {
 
 		    <div className="user-info-container">
 
-          <div className="user-name">{this.props.userData.data.response_data.first_name}</div>
+          <div className="user-name">
+
+            {/* <div>{this.props.userData.data.response_data.first_name}</div> */}
+
+            <button onClick = {() => this.logout()}>Logout</button>
+
+          </div>  
 
 		    </div>
 
@@ -33,15 +42,21 @@ class UserDashboardHeader extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log("dekh toh dhyan se " + JSON.stringify(state.userReducer));
-  return {
-    userData : state.userReducer,
-  }
-  
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    sendUserInfo: (data) => dispatch(userAction(data)),  
+    sendSessionData: (data) => dispatch(sessionAction(data))   
+  })
 }
 
-export default connect(mapStateToProps, null)(UserDashboardHeader);
+const mapStateToProps = (state) => {
+  return {
+    userData : state.userReducer,
+  } 
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserDashboardHeader);
 
 
 
