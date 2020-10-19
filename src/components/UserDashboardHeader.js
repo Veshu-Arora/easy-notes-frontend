@@ -4,6 +4,7 @@ import '../css/UserDashboardHeader.css';
 import { connect } from 'react-redux';
 import {sessionAction} from '../redux/actions/sessionAction';
 import {userAction} from '../redux/actions/userAction';
+import {logoutAction} from '../redux/actions/logoutAction';
 
 
 class UserDashboardHeader extends Component {
@@ -11,6 +12,7 @@ class UserDashboardHeader extends Component {
   logout = () => {
     this.props.sendUserInfo({});
     this.props.sendSessionData(false);
+    this.props.sendLogoutSignal();
     localStorage.clear();
   }
 
@@ -27,11 +29,11 @@ class UserDashboardHeader extends Component {
 
 		    <div className="user-info-container">
 
-          <div className="user-name">
-
-            {/* <div>{this.props.userData.data.response_data.first_name}</div> */}
+          <div className="user-name-and-logout-button">
 
             <button onClick = {() => this.logout()}>Logout</button>
+
+            <div className = "user-name">{this.props.userData.data.response_data.first_name}</div>
 
           </div>  
 
@@ -46,7 +48,8 @@ class UserDashboardHeader extends Component {
 const mapDispatchToProps = (dispatch) => {
   return ({
     sendUserInfo: (data) => dispatch(userAction(data)),  
-    sendSessionData: (data) => dispatch(sessionAction(data))   
+    sendSessionData: (data) => dispatch(sessionAction(data)),
+    sendLogoutSignal: (data) => dispatch(logoutAction(data))   
   })
 }
 

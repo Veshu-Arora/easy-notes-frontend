@@ -3,6 +3,7 @@ import '../css/GroupDescriptionCard.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {groupIdAction} from '../redux/actions/groupIdAction';
+import {apiUrl} from '../constants';
 
 class GroupDescriptionCard extends Component{
     constructor(){
@@ -22,10 +23,9 @@ class GroupDescriptionCard extends Component{
 
 
     getPublicGroups = () => {
-      console.log("GET PUBLIC GROUPS CHAL RHA H");
         axios({
             method: 'get',
-            url: 'http://127.0.0.1:5000/publicgroups',
+            url: `${apiUrl}/publicgroups`,
             }).then((res)=>{
                 if(!res.data.response_data.status){
                     this.setState({
@@ -37,21 +37,16 @@ class GroupDescriptionCard extends Component{
                         pending:false,
                         public_groups:res.data.response_data.all_public_groups
                     })
-                    console.log("GET REQUEST KA REPLY: ", JSON.stringify(res.data.response_data.all_public_groups));
+                    // console.log("GET REQUEST KA REPLY: ", JSON.stringify(res.data.response_data.all_public_groups));
                 }
                 
-                // wahi data send karna hai reducer me jiski jarurat hai faltu ka data bhejne ka chutiyapa mat karna
-                // this.props.sendPersonalTodos(res.data.response_data.todos_exists)
             }).catch((err)=>{
-                console.log(" All Public Groups Error: " + err);
+                alert(" All Public Groups Error: " + err);
         });  
 
     }
 
-    // duty = (id)=>{
-    //     this.props.sendGroupId(id);
-    //     this.props.toggleGroupLoginForm();
-    // }
+
     render(){
         return(
 
@@ -79,7 +74,7 @@ class GroupDescriptionCard extends Component{
                                                 this.props.toggleGroupLoginForm();
                                                 
                                             }}>
-                                            Login
+                                                Login
                                             </button> 
                                         </div>
 

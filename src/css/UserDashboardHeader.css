@@ -16,24 +16,22 @@
 	align-items: center;
 	justify-content: center;
 	width: 25vw;
-	background-color: #f1f1f1;
+	background-color: #f1f1ff;
 	margin-right: 10px;
 }
 
 
 .header-container .user-info-container{
-	/* display: flex;
-	justify-content: flex-end !important; */
+	/* display: flex; */
 	width: 75vw;
-	background-color: red;
-	/* padding: 10px 10px; */
 }
 
-.header-container .user-info-container .user-name{
+.header-container .user-info-container .user-name-and-logout-button{
 	display: flex;
-	justify-content: flex-end;
-	align-items: flex-start;
-	padding-top: 10px;
+	justify-content: space-around;
+	flex-direction: column;
+	align-items: flex-end;
+	padding-top: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
 	font-size: 20px;
@@ -44,11 +42,14 @@
 	
 }
 
-.header-container .user-info-container .user-name div{
-	background-color: purple;
+.header-container .user-info-container .user-name-and-logout-button .user-name{
+	font-size: 25px;
+	color: black;
+	text-decoration: underline;
+	font-style: italic;
 }
 
-.header-container .user-info-container .user-name button{
+.header-container .user-info-container .user-name-and-logout-button button{
 	/* border-radius: 2px; */
 	padding: 2px 2px 2px 2px;
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../css/UpdateTask.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 import {activeTabAction} from '../redux/actions/activeTabAction';
 
@@ -23,7 +24,7 @@ class UpdateTask extends Component{
     componentDidMount() {
 
         this.updateThisTask();
-        alert(JSON.stringify(this.updateThisTask()))
+        // alert(JSON.stringify(this.updateThisTask()))
 
 
         this.setState({
@@ -66,7 +67,7 @@ class UpdateTask extends Component{
          
             axios({
                 method: 'put',
-                url: 'http://127.0.0.1:5000/personaltodos',
+                url: `${apiUrl}/personaltodos`,
                 data: {
                   todo_id : this.state.todo_id,
                   title:this.state.title,
@@ -76,9 +77,10 @@ class UpdateTask extends Component{
                   expires_at:this.state.expires_at
                 }
               }).then((res)=>{
-                console.log(JSON.stringify(res.data));
+                    alert(res.data.response_data.message);
+                    this.props.sendActiveTab(1);
               }).catch((err)=>{
-                  console.log(" Update Todo Error : " + err);
+                    alert(" Update Todo Error : " + err);
               });   
         }
        

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {groupInfoAction} from '../redux/actions/groupInfoAction';
 import {groupSessionAction} from '../redux/actions/groupSessionAction';
+import {apiUrl} from '../constants';
 
 
 class GroupLoginForm extends Component{
@@ -41,7 +42,7 @@ class GroupLoginForm extends Component{
 
             axios({
                 method: 'get',
-                url: `http://127.0.0.1:5000/publicgrouplogin/${this.state.group_id}/${this.state.group_code}/${this.state.password}`,
+                url: `${apiUrl}/publicgrouplogin/${this.state.group_id}/${this.state.group_code}/${this.state.password}`,
               }).then((res)=>{
                 // alert(JSON.stringify(res.data.response_data))
                 if(res.data.response_data.status){
@@ -49,11 +50,11 @@ class GroupLoginForm extends Component{
                     this.props.sendGroupInfo(res.data);               
                     this.props.history.push('/groupdashboard');
                 }else{
-                    alert(res.data.response_data.message)
+                    alert(res.data.response_data.message);
                 }
                 
               }).catch((err)=>{
-                  console.log("Group Login Error : " + err);
+                    alert("Group Login Form Error : " + err);
             })
 
         }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {userAction} from '../redux/actions/userAction';
 import {sessionAction} from '../redux/actions/sessionAction';
+import {apiUrl} from '../constants';
 import '../css/UserLoginForm.css';
 
 
@@ -28,17 +29,17 @@ login = () => {
     if(this.state.email && this.state.password){
         axios({
             method: 'get',
-            url: `http://127.0.0.1:5000/login/${this.state.email}/${this.state.password}`,
+            url: `${apiUrl}/login/${this.state.email}/${this.state.password}`,
             }).then((res)=>{
             if(res.data.response_data.status){
                 this.props.sendUserInfo(res.data);
                 this.props.sendSessionData(true);
                 this.props.history.push('/userdashboard')
             }else{
-                alert("account does not exist");
+                alert(res.data.response_data.message);
             }
             }).catch((err)=>{
-                console.log("User Login Error : " + err);
+                alert("User Login Form Error : " + err);
             }); 
     }
 }

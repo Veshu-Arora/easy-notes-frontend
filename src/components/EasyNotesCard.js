@@ -20,7 +20,7 @@ class EasyNotesCard extends Component{
                 <hr/>
 
                 <div className='description-text'>
-                   Easy Notes allows you to manage your day to day tasks and in a more efficient manner
+                   Easy Notes allows you to manage your day to day tasks in a more efficient manner
                    thereby improving your overall productivity
                 </div>
 

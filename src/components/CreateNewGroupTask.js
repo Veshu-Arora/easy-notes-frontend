@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../css/CreateNewTask.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 import {activeTabAction} from '../redux/actions/activeTabAction';
 
@@ -42,7 +43,7 @@ class CreateNewGroupTask extends Component{
         
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:5000/publicgrouptodos',
+                url: `${apiUrl}/publicgrouptodos`,
                 data: {
                   title:this.state.title,
                   description:this.state.description,
@@ -51,9 +52,9 @@ class CreateNewGroupTask extends Component{
                   expires_at:this.state.expires_at
                 }
               }).then((res)=>{
-                console.log(JSON.stringify(res.data));
+                    alert(res.data.response_data.message);
               }).catch((err)=>{
-                  console.log("Create Group Todo Error : " + err);
+                    alert("Create Group Todo Error : " + err);
               });   
         }
        

@@ -3,6 +3,8 @@ import '../css/AllTasks.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {personalTodosAction} from '../redux/actions/personalTodosAction';
+import {apiUrl} from '../constants';
+
 
 
 class AllTasks extends Component{
@@ -28,7 +30,7 @@ class AllTasks extends Component{
       
         axios({
             method: 'get',
-            url: `http://127.0.0.1:5000/getpersonaltodos/${this.props.userData.data.response_data.email}`,
+            url: `${apiUrl}/getpersonaltodos/${this.props.userData.data.response_data.email}`,
             }).then((res)=>{
                 if(!res.data.response_data.status){
                     this.setState({
@@ -42,10 +44,10 @@ class AllTasks extends Component{
                     })
                 }
                 
-                // wahi data send karna hai reducer me jiski jarurat hai faltu ka data bhejne ka chutiyapa mat karna
+                // send only the data that will be required later
                 this.props.sendPersonalTodos(res.data.response_data.todos_exists)
             }).catch((err)=>{
-                console.log(" All Task Error: " + err);
+                alert(" All Tasks Error: " + err);
         });  
 
     }
