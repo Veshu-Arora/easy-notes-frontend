@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../css/UserLoginForm.css';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 class UserSignupForm extends Component{
     constructor(){
@@ -29,7 +30,7 @@ class UserSignupForm extends Component{
          
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:5000/users',
+                url: `${apiUrl}/users`,
                 data: {
                   first_name:this.state.first_name,
                   last_name:this.state.last_name,
@@ -38,9 +39,10 @@ class UserSignupForm extends Component{
                   password:this.state.password
                 }
               }).then((res)=>{
-                console.log(JSON.stringify(res.data));
+                    alert(res.data.response_data.message);
+                    this.props.toggleSignupForm()
               }).catch((err)=>{
-                  console.log("Error : " + err);
+                    alert("User Signup Form Error : " + err);
               });   
         }
        

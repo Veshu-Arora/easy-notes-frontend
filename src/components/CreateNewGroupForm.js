@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../css/UserLoginForm.css';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 class CreateNewGroupForm extends Component{
     constructor(){
@@ -34,7 +35,7 @@ class CreateNewGroupForm extends Component{
         {
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:5000/publicgroups',
+                url: `${apiUrl}/publicgroups`,
                 data: {
                   group_name:this.state.group_name,
                   group_code:this.state.group_code,
@@ -42,9 +43,10 @@ class CreateNewGroupForm extends Component{
                   description:this.state.description,
                 }
               }).then((res)=>{
-                alert(JSON.stringify(res.data.response_data.message))
+                    alert(res.data.response_data.message);
+                    this.props.toggleCreateNewGroupForm()
               }).catch((err)=>{
-                  alert(" Create New Group Error : " + err);
+                    alert(" Create New Group Error : " + err);
               });   
         }
        

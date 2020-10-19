@@ -14,6 +14,7 @@ import groupTodosReducer from './reducers/groupTodosReducer';
 import updateGroupTodoIdReducer from './reducers/updateGroupTodoIdReducer';
 import groupSessionReducer from '../redux/reducers/groupSessionReducer';
 import deleteGroupTodoIdReducer from '../redux/reducers/deleteGroupTodoIdReducer';
+import {LOG_OUT} from './actions/types';
 
 
 const rootReducer = combineReducers ({
@@ -32,25 +33,36 @@ const rootReducer = combineReducers ({
 })
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist:[
-      "userReducer",
-      "activeTabReducer",
-      "personalTodosReducer",
-      "updateTodoIdReducer",
-      "deleteTodoIdReducer",
-      "sessionReducer",
-      "groupIdReducer",
-      "groupInfoReducer",
-      "groupTodosReducer",
-      "updateGroupTodoIdReducer",
-      "groupSessionReducer",
-      "deleteGroupTodoIdReducer"
-    ]
-  }
+  key: 'root',
+  storage,
+  whitelist:[
+    "userReducer",
+    "activeTabReducer",
+    "personalTodosReducer",
+    "updateTodoIdReducer",
+    "deleteTodoIdReducer",
+    "sessionReducer",
+    "groupIdReducer",
+    "groupInfoReducer",
+    "groupTodosReducer",
+    "updateGroupTodoIdReducer",
+    "groupSessionReducer",
+    "deleteGroupTodoIdReducer"
+  ]
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const logoutReducer = ( state, action ) => {
+  if ( action.type === LOG_OUT ) {
+    state = undefined;
+  }
+      
+  return rootReducer(state, action)
+}
+
+
+
+const persistedReducer = persistReducer(persistConfig, logoutReducer)
 
 export const store = createStore(persistedReducer)
 export const persistor = persistStore(store)

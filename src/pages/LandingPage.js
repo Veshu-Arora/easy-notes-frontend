@@ -20,6 +20,7 @@ class LandingPage extends Component {
      create_new_group_form_is_visible:false,
    }
  }
+ 
 
  toggleSignupForm =()=>{
    this.setState((prevState)=>({
@@ -31,14 +32,20 @@ class LandingPage extends Component {
   this.setState((prevState)=>({
     login_form_is_visible: !prevState.login_form_is_visible
   }))
-}
+ }
 
 
-toggleCreateNewGroupForm =()=>{
+ toggleCreateNewGroupForm =()=>{
   this.setState((prevState)=>({
     create_new_group_form_is_visible: !prevState.create_new_group_form_is_visible
   }))
-}
+ }
+
+
+ componentDidMount() {
+   alert((<h1>Hey there! What's up? You see, this is my first React project and i am a developer, not a designer. 
+   So, Please don't judge me for the design! Have a good day! &#128512;</h1>).props.children)
+ }
 
 
   render(){

@@ -4,6 +4,7 @@ import '../css/UserDashboardHeader.css';
 import { connect } from 'react-redux';
 import {groupInfoAction} from '../redux/actions/groupInfoAction';
 import {groupSessionAction} from '../redux/actions/groupSessionAction';
+import {logoutAction} from '../redux/actions/logoutAction';
 
 
 class GroupDashboardHeader extends Component {
@@ -11,6 +12,7 @@ class GroupDashboardHeader extends Component {
   logout = () => { 
     this.props.sendGroupInfo({});
     this.props.sendGroupSessionData(false);
+    this.props.sendLogoutSignal();
     localStorage.clear();
   }
 
@@ -30,11 +32,11 @@ class GroupDashboardHeader extends Component {
 
 		    <div className="user-info-container">
 
-          <div className="user-name">
+          <div className="user-name-and-logout-button">
 
             <button onClick = {() => this.logout()}>Logout</button>
             
-            {/* {this.props.getgroupInfo.data.response_data.group_name} */}
+            <div className = "user-name">{this.props.getgroupInfo.data.response_data.group_name}</div>
             
           </div>
 
@@ -49,7 +51,8 @@ class GroupDashboardHeader extends Component {
 const mapDispatchToProps = (dispatch) => {
   return ({
       sendGroupInfo: (data) => dispatch(groupInfoAction(data)),  
-      sendGroupSessionData: (data) => dispatch(groupSessionAction(data))   
+      sendGroupSessionData: (data) => dispatch(groupSessionAction(data)),
+      sendLogoutSignal: (data) => dispatch(logoutAction(data))  
   })
 }
 

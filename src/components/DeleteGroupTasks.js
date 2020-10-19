@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../css/DeleteTasks.css';  //  FOR NOW WE WILL USE THE SAME CSS AS OF Delete Tasks
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 import {deleteGroupTodoIdAction} from '../redux/actions/deleteGroupTodoIdAction';
 
@@ -28,7 +29,7 @@ class DeleteGroupTasks extends Component{
       
     //     axios({
     //         method: 'get',
-    //         url: `http://127.0.0.1:5000/getpersonaltodos/${this.props.userData.data.response_data.email}`,
+    //         url: `${apiUrl}/getpersonaltodos/${this.props.userData.data.response_data.email}`,
     //         }).then((res)=>{
     //             this.setState({
     //                 pending:false
@@ -41,25 +42,50 @@ class DeleteGroupTasks extends Component{
 
 
 
-    deleteTodo = (id) => {
+    // deleteTodo = (id) => {
         
-        axios({
-            method: 'delete',
-            url: 'http://127.0.0.1:5000/publicgrouptodos',
-            data: {
-                todo_id : id
-            }
-            }).then((res)=>{
-            console.log(JSON.stringify(res.data));
-            }).catch((err)=>{
-                console.log(" Delete Group Todo Error : " + err);
-        });   
+    //     axios({
+    //         method: 'delete',
+    //         url: `${apiUrl}/publicgrouptodos`,
+    //         data: {
+    //             todo_id : id
+    //         }
+    //         }).then((res)=>{
+    //             alert(JSON.stringify(res.data));
+    //         }).catch((err)=>{
+    //             alert(" Delete Group Todo Error : " + err);
+    //     });   
        
-    }   
+    // }   
 
 
 
     render(){
+
+        if (this.props.getGroupTodos.data === undefined){
+            return(
+                <div className = 'heading-and-delete-tasks'>
+
+                    <div className="heading">
+
+                        <span className="text-or-logo">Delete Tasks</span>
+
+                    </div>
+
+                    <div className="delete-tasks">
+                        <div className = "default-message">
+                            <h1>Hey there!</h1>
+                            <br/>
+                            <h2>You have not created any todos Yet!</h2>
+                            <br/>
+                            <h2>Click on "Create New Task" to create Todos!</h2>
+                        </div>
+                    </div>
+
+                </div>
+            )
+        }
+
         return(
 
             <div className = 'heading-and-delete-tasks'>

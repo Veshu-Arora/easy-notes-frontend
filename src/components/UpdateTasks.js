@@ -16,6 +16,31 @@ class UpdateTasks extends Component{
 
 
     render(){
+
+        if (this.props.personalTodos.data === undefined){
+            return(
+            
+                <div className = 'heading-and-update-tasks'>
+
+                    <div className="heading">
+
+                        <span className="text-or-logo">Update Tasks</span>
+
+                    </div>
+                   
+                    <div className="update-tasks">
+                        <div className = "default-message">
+                            <h1>Hey there!</h1>
+                            <br/>
+                            <h2>You have not created any todos Yet!</h2>
+                            <br/>
+                            <h2>Click on "Create New Task" to create Todos!</h2>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
         return(
 
             <div className = 'heading-and-update-tasks'>

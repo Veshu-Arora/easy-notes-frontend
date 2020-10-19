@@ -40,8 +40,7 @@ class MainBody extends Component{
 
                 {this.props.active_tab.data === 4?<DeleteTasks />:null}
                     
-
-		    </div>
+		        </div>
         )
     }
 } 

@@ -10,3 +10,4 @@ export const ACTIVE_SESSION = 'ACTIVE_SESSION';
 export const ACTIVE_GROUP_SESSION = "ACTIVE_GROUP_SESSION";
 export const GROUP_ID = 'GROUP_ID';
 export const GROUP_TODOS = 'GROUP_TODOS';
+export const LOG_OUT = 'LOG_OUT';

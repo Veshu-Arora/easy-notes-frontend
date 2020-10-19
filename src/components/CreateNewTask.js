@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../css/CreateNewTask.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 import {activeTabAction} from '../redux/actions/activeTabAction';
 
@@ -40,7 +41,7 @@ class CreateNewTask extends Component{
          
             axios({
                 method: 'post',
-                url: 'http://127.0.0.1:5000/personaltodos',
+                url: `${apiUrl}/personaltodos`,
                 data: {
                   title:this.state.title,
                   description:this.state.description,
@@ -49,9 +50,9 @@ class CreateNewTask extends Component{
                   expires_at:this.state.expires_at
                 }
               }).then((res)=>{
-                console.log(JSON.stringify(res.data));
+                    alert(res.data.response_data.message);
               }).catch((err)=>{
-                  console.log("Create Todo Error : " + err);
+                    alert("Create Todo Error : " + err);
               });   
         }
        

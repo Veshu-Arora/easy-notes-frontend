@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import '../css/DeleteTasks.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {apiUrl} from '../constants';
 
 import {deleteTodoIdAction} from '../redux/actions/deleteTodoIdAction';
 
@@ -25,14 +26,14 @@ class DeleteTasks extends Component{
         
     //     axios({
     //         method: 'delete',
-    //         url: 'http://127.0.0.1:5000/personaltodos',
+    //         url: `${apiUrl}/personaltodos`,
     //         data: {
     //             todo_id : id
     //         }
     //         }).then((res)=>{
-    //         console.log(JSON.stringify(res.data));
+    //             alert(JSON.stringify(res.data));
     //         }).catch((err)=>{
-    //             console.log(" Delete Todo Error : " + err);
+    //             alert(" Delete Todo Error : " + err);
     //     });   
        
     // }   
@@ -40,6 +41,30 @@ class DeleteTasks extends Component{
 
 
     render(){
+
+        if (this.props.personalTodos.data === undefined){
+            return(
+            
+                <div className = 'heading-and-delete-tasks'>
+
+                    <div className="heading">
+
+                        <span className="text-or-logo">Delete Tasks</span>
+
+                    </div>
+                   
+                    <div className="delete-tasks">
+                        <div className = "default-message">
+                            <h1>Hey there!</h1>
+                            <br/>
+                            <h2>You have not created any todos Yet!</h2>
+                            <br/>
+                            <h2>Click on "Create New Task" to create Todos!</h2>
+                        </div>
+                    </div>
+                </div>)
+            }
+        
         return(
 
             <div className = 'heading-and-delete-tasks'>

@@ -3,6 +3,7 @@ import '../css/AllTasks.css';  // WE WILL USE THE CSS OF ALL TASKS FOR NOW
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {groupTodosAction} from '../redux/actions/groupTodosAction';
+import {apiUrl} from '../constants';
 
 
 class AllGroupTasks extends Component{
@@ -29,7 +30,7 @@ class AllGroupTasks extends Component{
       
         axios({
             method: 'get',
-            url: `http://127.0.0.1:5000/getpublicgrouptodos/${this.props.getgroupInfo.data.response_data.group_code}`,
+            url: `${apiUrl}/getpublicgrouptodos/${this.props.getgroupInfo.data.response_data.group_code}`,
             }).then((res)=>{
                 if(!res.data.response_data.status){
                     this.setState({
@@ -43,10 +44,10 @@ class AllGroupTasks extends Component{
                     })
                 }
                 
-                // wahi data send karna hai reducer me jiski jarurat hai faltu ka data bhejne ka chutiyapa mat karna
+                // send only the data that will be required later
                 this.props.sendGroupTodos(res.data.response_data.todos_exists)
             }).catch((err)=>{
-                console.log(" All Group Task Error: " + err);
+                alert(" All Group Task Error: " + err);
         });  
 
     }

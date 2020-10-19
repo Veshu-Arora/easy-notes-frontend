@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import '../css/ConfirmDeleteForm.css';
+import {apiUrl} from '../constants';
+
+import {activeTabAction} from '../redux/actions/activeTabAction';
 
 
 class ConfirmDeleteFormGroup extends Component{
@@ -29,14 +32,15 @@ class ConfirmDeleteFormGroup extends Component{
         
         axios({
             method: 'delete',
-            url: 'http://127.0.0.1:5000/publicgrouptodos',
+            url: `${apiUrl}/publicgrouptodos`,
             data: {
                 todo_id : id
             }
             }).then((res)=>{
-            alert(JSON.stringify(res.data.response_data.message));
+                alert(res.data.response_data.message);
+                this.props.sendActiveTab(1);
             }).catch((err)=>{
-                console.log(" Delete Group Todo Error : " + err);
+                alert(" Delete Group Todo Error : " + err);
         });   
        
     }
@@ -64,6 +68,14 @@ class ConfirmDeleteFormGroup extends Component{
     }   
 }
 
+
+const mapDispatchToProps = (dispatch) => {
+    return ({
+      sendActiveTab: (data) => dispatch(activeTabAction(data))   
+    })
+}
+
+
 const mapStateToProps = (state) => {
     return {
       getDeleteGroupTodoId : state.deleteGroupTodoIdReducer
@@ -71,4 +83,4 @@ const mapStateToProps = (state) => {
     
 }
 
-export default connect(mapStateToProps, null)(ConfirmDeleteFormGroup);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmDeleteFormGroup);

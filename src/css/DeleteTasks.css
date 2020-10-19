@@ -37,8 +37,12 @@
     text-align: left;
     overflow-y: scroll;
     border: 10px solid white;
-    padding-top: 150px;
-    /* padding: 5px 5px 5px 5px; */
+    padding-top: 150px; /* Because of this 150px padding, we had to give Negative 150px top padding in default-message */
+}
+
+.body-container .main-body .heading-and-delete-tasks .delete-tasks .default-message{
+    text-align: center;
+    margin-top: -150px;
 }
 
 /* .body-container .main-body .all-tasks:hover{
